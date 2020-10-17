@@ -1,7 +1,8 @@
 id: org.winehq.Wine.DLLs.dxvk
+default-branch: proton
 build-extension: true
 runtime: org.winehq.Wine
-runtime-version: stable
+runtime-version: proton
 sdk: org.freedesktop.Sdk//21.08
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.mingw-w64
@@ -50,22 +51,15 @@ modules:
     post-install: &dxvk-post-install
       - |
         set -e
-        for lib in dxgi d3d9 d3d10 d3d10core d3d10_1 d3d11; do
+        for lib in dxvk_config dxgi d3d9 d3d10 d3d10core d3d10_1 d3d11; do
           winebuild --builtin ${FLATPAK_DEST}/lib${SUFFIX}/$lib.dll
         done
       - mkdir -p ${FLATPAK_DEST}/bin${SUFFIX}
       - mv -v ${FLATPAK_DEST}/lib${SUFFIX}/*.exe ${FLATPAK_DEST}/bin${SUFFIX}/
     sources: &dxvk-sources
       - type: git
-        url: https://github.com/doitsujin/dxvk.git
-        tag: v1.9.2
-        commit: b79ce7af8aee808986a540216203ea7c021fd5d7
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/doitsujin/dxvk/releases/latest
-          tag-query: .tag_name
-          version-query: $tag | sub("^[vV]"; "")
-          is-main-source: true
+        url: https://github.com/ValveSoftware/dxvk.git
+        branch: proton_5.13
       - type: file
         path: dxvk-ccache-win32.txt
       - type: file
