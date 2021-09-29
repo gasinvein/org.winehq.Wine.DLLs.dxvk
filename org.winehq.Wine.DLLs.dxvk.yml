@@ -59,8 +59,8 @@ modules:
     sources: &dxvk-sources
       - type: git
         url: https://github.com/ValveSoftware/dxvk.git
-        tag: proton-dxvk-5.13-6
-        commit: 3f91cdbc126abde7b2334e739d08de0ef2edd1d2
+        tag: proton-dxvk-6.3-6
+        commit: 2a98217b2d61b1fcaa3523b5edf1d81693a085dd
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ValveSoftware/dxvk/git/refs/tags/proton-dxvk-
