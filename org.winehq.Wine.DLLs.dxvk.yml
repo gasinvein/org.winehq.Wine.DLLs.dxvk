@@ -61,6 +61,14 @@ modules:
         url: https://github.com/ValveSoftware/dxvk.git
         tag: proton-dxvk-5.13-6
         commit: 3f91cdbc126abde7b2334e739d08de0ef2edd1d2
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/ValveSoftware/dxvk/git/refs/tags/proton-dxvk-
+          tag-query: last | .ref | sub("^refs/tags/"; "")
+          commit-query: last | .object.sha
+          version-query: $tag | sub("^proton-dxvk-"; "")
+          timestamp-data-url: last | .object.url
+          timestamp-query: .committer.date
       - type: file
         path: dxvk-ccache-win32.txt
       - type: file
