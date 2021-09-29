@@ -59,7 +59,8 @@ modules:
     sources: &dxvk-sources
       - type: git
         url: https://github.com/ValveSoftware/dxvk.git
-        branch: proton_5.13
+        tag: proton-dxvk-5.13-6
+        commit: 3f91cdbc126abde7b2334e739d08de0ef2edd1d2
       - type: file
         path: dxvk-ccache-win32.txt
       - type: file
